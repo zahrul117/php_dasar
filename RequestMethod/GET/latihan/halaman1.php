@@ -55,11 +55,13 @@ $buku = [
 <body>
     <h1>Daftar Buku</h1>
     <ul>
-    <?php foreach ($buku as $b) : ?>
+        <?php foreach ($buku as $b) : ?>
+
             <li>
-                <a href="halaman2.php?judul=<?= $b['judul'];?>&pengarang=<?= $b['pengarang'];?>&penerbit=<?= $b['penerbit'];?>&tahun=<?= $b['tahun'];?>&genre=<?= $b['genre'];?>&gambar=<?= $b['gambar'];?>"><?= $b['judul']; ?></a>
+                <a href="halaman2.php?judul=<?= $b['judul']; ?>&pengarang=<?= $b['pengarang']; ?>&penerbit=<?= $b['penerbit']; ?>&tahun=<?= $b['tahun']; ?>&genre=<?= $b['genre']; ?>&gambar=<?= $b['gambar']; ?>"><?= $b['judul']; ?></a>
             </li>
-    <?php endforeach; ?>
+
+        <?php endforeach; ?>
     </ul>
 </body>
 
