@@ -28,20 +28,20 @@ $mahasiswa = query("SELECT * FROM mahasiswa");
             <th>Jurusan</th>
         </tr>
         <?php $i = 1 ?>
-        <?php foreach($mahasiswa as $mhs):?>
-        <tr>
-            <td><?= $i; ?></td>
-            <td>
-                <a href="">Ubah</a> |
-                <a href="">Hapus</a>
-            </td>
-            <td><img src="img/<?= $mhs['gambar']; ?>" alt="" width="75"></td>
-            <td><?= $mhs['nrp']?></td>
-            <td><?= $mhs['nama']?></td>
-            <td><?= $mhs['email']?></td>
-            <td><?= $mhs['jurusan']?></td>
-        </tr>
-        <?php $i++ ?>
+        <?php foreach ($mahasiswa as $mhs): ?>
+            <tr>
+                <td><?= $i; ?></td>
+                <td>
+                    <a href="">Ubah</a> |
+                    <a href="hapus.php?id=<?= $mhs['id'] ?>" onclick="return confirm('Yakin?')">Hapus</a>
+                </td>
+                <td><img src="img/<?= $mhs['gambar']; ?>" alt="" width="75"></td>
+                <td><?= $mhs['nrp'] ?></td>
+                <td><?= $mhs['nama'] ?></td>
+                <td><?= $mhs['email'] ?></td>
+                <td><?= $mhs['jurusan'] ?></td>
+            </tr>
+            <?php $i++ ?>
         <?php endforeach; ?>
     </table>
 </body>

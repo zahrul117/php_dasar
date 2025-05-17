@@ -1,31 +1,57 @@
 <?php
-$konek = mysqli_connect('localhost', 'root', '', 'phpdasarlagi');
+require 'functions.php';
 
-
-// cek apakah tombol submit sudah ditekan atau belum
 if (isset($_POST['submit'])) {
-    // ambil data dari tiap elemen dalam form
-    $nrp = $_POST['nrp'];
-    $nama = $_POST['nama'];
-    $email = $_POST['email'];
-    $jurusan = $_POST['jurusan'];
-    $gambar =  $_POST['gambar'];
-
-    $query = "INSERT INTO mahasiswa
-                Values
-                ('','$nrp','$nama','$email','$jurusan','$gambar')
-                ";
-
-    mysqli_query($konek, $query);
-
-    // cek apakah data berhasil di tambahkan/tidak
-    if (mysqli_affected_rows($konek) > 0) {
-        echo "data berhasil di tambahkan";
+    if (tambah($_POST) > 0) {
+        // Alert berhasil
+        echo '
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        </head>
+        <body>
+            <script>
+                Swal.fire({
+                    icon: "success",
+                    title: "Berhasil!",
+                    text: "Data berhasil ditambahkan!",
+                    confirmButtonText: "OK"
+                }).then(() => {
+                    window.location.href = "index.php";
+                });
+            </script>
+        </body>
+        </html>
+        ';
+        exit;
     } else {
+        // Alert gagal
+        echo '
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        </head>
+        <body>
+            <script>
+                Swal.fire({
+                    icon: "error",
+                    title: "Gagal!",
+                    text: "Data gagal ditambahkan.",
+                    confirmButtonText: "Coba Lagi"
+                }).then(() => {
+                    window.location.href = "index.php";
+                });
+            </script>
+        </body>
+        </html>
+        ';
+        exit;
     }
 }
-
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
